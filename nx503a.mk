@@ -63,6 +63,9 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Bluetooth
+PRODUCT_PACKAGES += \
+    bdAddrLoader
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
@@ -152,6 +155,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_wvm
 
+# RIL
+PRODUCT_PACKAGES += \
+    libril_shim
+
 # Ebtables
 PRODUCT_PACKAGES += \
     ebtables \
@@ -181,10 +188,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf 
 
-# IPC router config
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
-
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
@@ -192,10 +195,6 @@ PRODUCT_COPY_FILES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8974
-
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm8974
 
 # IR packages
 PRODUCT_PACKAGES += \
@@ -266,10 +265,6 @@ PRODUCT_PACKAGES += \
     regulatory.bin \
     linville.key.pub.pem
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.sys.umsdirtyratio=20
-
 PRODUCT_PACKAGES += \
     giflib
 
@@ -315,44 +310,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tp_node.sh:system/bin/tp_node.sh
 
-# Camera2 API
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
 
+#Google's stuff   
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
     ro.com.google.clientidbase=android-zte \
     ro.com.google.clientidbase.ms=android-zte \
     ro.com.google.clientidbase.am=android-zte \
     ro.com.google.clientidbase.gmm=android-zte \
-    ro.com.google.clientidbase.yt=android-zte \
-
-# CDMA
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.default_cdma_sub=0
-
-# Disable QC Oem Hook
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.oem_socket=false
-
-# Media
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
-
-# Support for graceful UICC Vltg supply deact
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.qcril_uim_vcc_feature=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.no_wait_for_card=1 \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.add_power_save=1 \
-    persist.env.spec=Default \
-    ro.telephony.call_ring.multiple=false \
-    persist.data.qmi.adb_logmask=0
-
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.dex2oat-swap=false
+    ro.com.google.clientidbase.yt=android-zte     
