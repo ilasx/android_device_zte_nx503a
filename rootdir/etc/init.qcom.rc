@@ -208,6 +208,9 @@ on post-fs-data
     mkdir /data/misc/sensors 0775 system system
     restorecon_recursive /data/misc/sensors
 
+    # communicate with mpdecision and thermald
+    mkdir /dev/socket/mpdecision 2770 root system
+
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -535,7 +538,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 service mpdecision /system/bin/mpdecision --avg_comp
     class main
     user root
-    group root readproc
+    group root system readproc
     disabled
 
 service thermal-engine /system/vendor/bin/thermal-engine --config /system/etc/thermal-engine-8974pro.conf
