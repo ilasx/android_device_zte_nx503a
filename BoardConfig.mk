@@ -121,13 +121,13 @@ BOARD_HARDWARE_CLASS += \
 TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
 
 # Enable dexpreopt to speed boot time
-#ifeq ($(HOST_OS),linux)
-#  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-#    ifeq ($(WITH_DEXPREOPT_BOOT_IMG_ONLY),)
-#      WITH_DEXPREOPT_BOOT_IMG_ONLY := true
-#    endif
-#  endif
-#endif
+ifeq ($(HOST_OS),linux)
+  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
+    ifeq ($(WITH_DEXPREOPT_BOOT_IMG_ONLY),)
+      WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+    endif
+  endif
+endif
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
