@@ -62,6 +62,7 @@ bluetooth.chip.vendor=brcm
 bluetooth.hfp.client=1
 ro.bluetooth.alwaysbleon=true
 ro.bluetooth.ftm_enabled=true
+persist.bt.enableAptXHD=true
 
 #Audio
 ro.qc.sdk.audio.ssr=false
