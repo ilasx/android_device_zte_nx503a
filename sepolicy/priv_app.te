@@ -1,2 +1,6 @@
 #============= priv_app ==============
 allow priv_app device:dir { open read };
+
+userdebug_or_eng(`
+  allow priv_app sysfs_smdpkt:dir r_dir_perms;
+')

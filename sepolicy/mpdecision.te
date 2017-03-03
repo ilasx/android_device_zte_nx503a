@@ -4,3 +4,8 @@ allow mpdecision socket_device:sock_file create;
 allow mpdecision socket_device:sock_file setattr;
 allow mpdecision socket_device:sock_file write;
 allow mpdecision system_data_file:file open;
+
+allow mpdecision sysfs_mpdecision:dir r_dir_perms;
+r_dir_file(mpdecision, mediaserver)
+
+allow mpdecision mpctl_socket:sock_file create_file_perms;
