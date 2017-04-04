@@ -61,7 +61,6 @@ on fs
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-    write /sys/class/android_usb/android0/f_ffs/aliases adb
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
 
@@ -73,7 +72,6 @@ on fs
     mkdir /data/tombstones 0775 system system
     mkdir /tombstones/modem 0775 system system
     mkdir /tombstones/lpass 0775 system system
-    mkdir /tombstones/wcnss 0775 system system
     mkdir /tombstones/dsps 0775 system system
 
 
@@ -556,7 +554,6 @@ service time_daemon /system/bin/time_daemon
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
-    start wcnss-service
 
 service config_bt_addr /system/bin/btnvtool -O
     class core
@@ -573,12 +570,6 @@ service audiod /system/bin/audiod
    class late_start
    user system
    group system
-
-service wcnss-service /system/bin/wcnss_service
-    class main
-    user system
-    group system wifi qcom_diag diag radio
-    oneshot
 
 service tp_node /system/bin/sh /system/bin/tp_node.sh
     class main
