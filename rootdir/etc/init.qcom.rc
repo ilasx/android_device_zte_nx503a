@@ -73,6 +73,9 @@ on fs
     mkdir /tombstones/modem 0775 system system
     mkdir /tombstones/lpass 0775 system system
     mkdir /tombstones/dsps 0775 system system
+    
+    #for easy_wakeup_gesture
+    mkdir /data/configs 0775 system system
 
 
 on boot
