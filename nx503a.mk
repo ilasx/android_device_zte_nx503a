@@ -168,7 +168,7 @@ PRODUCT_PACKAGES += \
 
 # Browser
 PRODUCT_PACKAGES += \
-    Gello
+    Jelly
 
 # Doze mode
 PRODUCT_PACKAGES += \
