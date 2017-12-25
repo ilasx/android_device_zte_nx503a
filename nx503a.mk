@@ -138,6 +138,7 @@ PRODUCT_PACKAGES += \
 # Compatibility
 PRODUCT_PACKAGES += \
     libboringssl-compat \
+    libshim_rmt_storage \
     libstlport
 
 # Data
